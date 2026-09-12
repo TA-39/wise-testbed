@@ -10,8 +10,7 @@ status_date: "9 September 2026"
 
 # TA39–WISE / EdTech Impact API Integration Status
 
-**Document reference:** `TA39-WISE_EdTechImpact-API-Integration-Status-v20260909`  
-**Status date:** 9 September 2026  
+**Last updated:** 9 September 2026  
 **Audience:** WISE, EdTech Impact and TA39  
 **Purpose:** Alignment on measurement capability, readiness and responsible reporting boundaries
 
