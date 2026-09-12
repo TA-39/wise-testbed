@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="googlebot" content="noindex, nofollow, noarchive">
+    <title>{{ page.title | default: site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description | escape }}">
+    <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="{{ '/' | relative_url }}" aria-label="TA39 WISE Testbed home">
+          <span class="brand__name">TA39</span>
+          <span class="brand__context">WISE Testbed</span>
+        </a>
+        <nav class="site-nav" aria-label="Document navigation">
+          <a href="{{ '/' | relative_url }}">Current status</a>
+          <a href="{{ '/decisions/' | relative_url }}">Decision log</a>
+          <a href="{{ '/changes/' | relative_url }}">Change log</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      {% if page.review_status %}
+      <section class="review-banner" aria-labelledby="review-status-title">
+        <div>
+          <p class="review-banner__eyebrow">Working record</p>
+          <h2 id="review-status-title">{{ page.review_status }}</h2>
+          <p>{{ page.review_note }}</p>
+        </div>
+        {% if page.status_date %}
+        <dl class="review-banner__meta">
+          <dt>Status date</dt>
+          <dd>{{ page.status_date }}</dd>
+        </dl>
+        {% endif %}
+      </section>
+      {% endif %}
+
+      <article class="document">
+        {{ content }}
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>Prepared for WISE, EdTech Impact, and TA39 counterpart review.</p>
+        <p>Public by link · Not indexed · No participant data</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
