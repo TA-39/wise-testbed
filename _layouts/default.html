@@ -13,13 +13,13 @@
     <header class="site-header">
       <div class="site-header__inner">
         <a class="brand" href="{{ '/' | relative_url }}" aria-label="TA39 WISE Testbed home">
-          <span class="brand__name">TA39</span>
+          <img class="brand__logo" src="{{ '/assets/ta39-logo-full.png' | relative_url }}" alt="TA39 — Teacher's Assistant">
           <span class="brand__context">WISE Testbed</span>
         </a>
         <nav class="site-nav" aria-label="Document navigation">
-          <a href="{{ '/' | relative_url }}">Current status</a>
-          <a href="{{ '/decisions/' | relative_url }}">Decision log</a>
-          <a href="{{ '/changes/' | relative_url }}">Change log</a>
+          <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Current status</a>
+          <a href="{{ '/decisions/' | relative_url }}"{% if page.url == '/decisions/' %} aria-current="page"{% endif %}>Decision log</a>
+          <a href="{{ '/changes/' | relative_url }}"{% if page.url == '/changes/' %} aria-current="page"{% endif %}>Change log</a>
         </nav>
       </div>
     </header>
@@ -41,9 +41,16 @@
       </section>
       {% endif %}
 
-      <article class="document">
-        {{ content }}
-      </article>
+      <div class="doc-layout">
+        <aside class="doc-toc" aria-label="On this page" hidden>
+          <p class="doc-toc__title">On this page</p>
+          <nav id="doc-toc-nav"></nav>
+        </aside>
+
+        <article class="document">
+          {{ content }}
+        </article>
+      </div>
     </main>
 
     <footer class="site-footer">
@@ -52,6 +59,52 @@
         <p>Public by link · Not indexed · No participant data</p>
       </div>
     </footer>
+
+    <script>
+      (function () {
+        var doc = document.querySelector('.document');
+        var layout = document.querySelector('.doc-layout');
+        var toc = document.querySelector('.doc-toc');
+        var nav = document.getElementById('doc-toc-nav');
+        if (!doc || !layout || !toc || !nav) return;
+
+        doc.querySelectorAll('table').forEach(function (table) {
+          var finalHeader = table.querySelector('thead th:last-child');
+          if (finalHeader && finalHeader.textContent.trim() === 'Readiness') {
+            table.classList.add('table--readiness');
+          }
+        });
+
+        var heads = doc.querySelectorAll('h2, h3');
+        if (!heads.length) return;
+
+        var links = [];
+        heads.forEach(function (heading, index) {
+          if (!heading.id) heading.id = 'section-' + (index + 1);
+          var link = document.createElement('a');
+          link.href = '#' + heading.id;
+          link.textContent = heading.textContent;
+          link.setAttribute('data-level', heading.tagName === 'H3' ? '3' : '2');
+          nav.appendChild(link);
+          links.push(link);
+        });
+
+        toc.hidden = false;
+        layout.classList.add('has-toc');
+        links[0].classList.add('is-current');
+        if (!('IntersectionObserver' in window)) return;
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            links.forEach(function (link) {
+              link.classList.toggle('is-current', link.hash === '#' + entry.target.id);
+            });
+          });
+        }, { rootMargin: '-110px 0px -70% 0px' });
+
+        heads.forEach(function (heading) { observer.observe(heading); });
+      })();
+    </script>
   </body>
 </html>
-
