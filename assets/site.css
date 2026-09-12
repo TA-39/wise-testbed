@@ -65,9 +65,8 @@ body {
 a { color: var(--accent); text-underline-offset: 0.18em; }
 a:hover { color: var(--accent-dark); }
 
-/* Header — 80px app header, flat white, no blur */
+/* Header — compact static header, flat white, no blur */
 .site-header {
-  position: sticky; top: 0; z-index: 10;
   background: var(--surface);
   border-bottom: 1px solid var(--line);
 }
@@ -76,11 +75,11 @@ a:hover { color: var(--accent-dark); }
   margin-inline: auto;
 }
 .site-header__inner {
-  min-height: 80px;
+  min-height: 64px;
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
 }
 .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
-.brand__logo { height: 54px; width: auto; display: block; margin: -10px 0; }
+.brand__logo { height: 34px; width: auto; display: block; }
 .brand__name { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; }
 .brand__context {
   background: var(--primary-200); color: var(--primary-800);
@@ -107,7 +106,7 @@ a:hover { color: var(--accent-dark); }
 }
 .doc-layout.has-toc { grid-template-columns: 216px minmax(0, 1fr); }
 .doc-toc[hidden] { display: none; }
-.doc-toc { position: sticky; top: 108px; }
+.doc-toc { position: sticky; top: 24px; }
 .doc-toc__title {
   margin: 0 0 10px; padding-left: 12px;
   color: #5F5F5F; font-size: 0.75rem; font-weight: 600;
@@ -171,7 +170,7 @@ a:hover { color: var(--accent-dark); }
 .document h3 { margin: 36px 0 14px; font-size: 1.1875rem; font-weight: 600; }
 .document h4 { margin: 28px 0 12px; font-size: 1rem; font-weight: 600; }
 .document p, .document ul, .document ol, .document blockquote { max-width: 68ch; color: var(--body); }
-.document h1, .document h2, .document h3, .document h4 { scroll-margin-top: 104px; }
+.document h1, .document h2, .document h3, .document h4 { scroll-margin-top: 24px; }
 .document h2, .document h3, .document h4 { max-width: 44ch; }
 .document li { margin-bottom: 6px; }
 .document strong { color: var(--ink); font-weight: 600; }
@@ -214,7 +213,6 @@ a:hover { color: var(--accent-dark); }
 .site-footer p { margin: 0; }
 
 @media (max-width: 760px) {
-  .site-header { position: static; }
   .site-header__inner, .site-footer__inner { align-items: flex-start; flex-direction: column; }
   .site-header__inner { padding-block: 16px; }
   .site-nav { gap: 4px 8px; margin-left: -14px; }
