@@ -1,0 +1,10 @@
+title: "TA39 WISE Testbed"
+description: "Partner review documents for the TA39 WISE Testbed"
+url: "https://ta-39.github.io"
+baseurl: "/wise-testbed"
+markdown: kramdown
+permalink: pretty
+strict_front_matter: true
+exclude:
+  - README.md
+

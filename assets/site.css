@@ -1,0 +1,371 @@
+:root {
+  color-scheme: light;
+  --ink: #17212b;
+  --muted: #5e6b78;
+  --line: #dfe5e9;
+  --surface: #ffffff;
+  --surface-soft: #f5f8f7;
+  --accent: #087f6d;
+  --accent-dark: #075f53;
+  --accent-soft: #e5f5f1;
+  --warning: #9a6700;
+  --warning-soft: #fff8db;
+  --shadow: 0 18px 55px rgba(31, 52, 61, 0.09);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(8, 127, 109, 0.08), transparent 28rem),
+    #f7f9f8;
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent-dark);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+.site-header {
+  border-bottom: 1px solid rgba(223, 229, 233, 0.9);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header__inner,
+.site-footer__inner,
+.page-shell {
+  width: min(1180px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.site-header__inner {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brand__name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.brand__context {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.site-nav a {
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--accent-dark);
+}
+
+.page-shell {
+  padding-block: 52px 72px;
+}
+
+.review-banner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: end;
+  margin-bottom: 28px;
+  padding: 28px 30px;
+  border: 1px solid #eedc8a;
+  border-radius: 18px;
+  background: var(--warning-soft);
+}
+
+.review-banner__eyebrow {
+  margin: 0 0 6px;
+  color: var(--warning);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.review-banner h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  letter-spacing: -0.025em;
+}
+
+.review-banner p:not(.review-banner__eyebrow) {
+  max-width: 76ch;
+  margin: 8px 0 0;
+  color: #5d4a13;
+}
+
+.review-banner__meta {
+  min-width: 165px;
+  margin: 0;
+}
+
+.review-banner__meta dt {
+  color: var(--warning);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.review-banner__meta dd {
+  margin: 2px 0 0;
+  font-weight: 700;
+}
+
+.document {
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 64px);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.document > :first-child {
+  margin-top: 0;
+}
+
+.document h1,
+.document h2,
+.document h3,
+.document h4 {
+  color: #14222b;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.document h1 {
+  max-width: 22ch;
+  margin-bottom: 18px;
+  font-size: clamp(2rem, 5vw, 3.7rem);
+  letter-spacing: -0.045em;
+}
+
+.document h2 {
+  margin: 64px 0 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+  letter-spacing: -0.035em;
+}
+
+.document h3 {
+  margin: 42px 0 15px;
+  font-size: 1.32rem;
+}
+
+.document h4 {
+  margin: 32px 0 12px;
+  font-size: 1.05rem;
+}
+
+.document p,
+.document ul,
+.document ol,
+.document blockquote {
+  max-width: 78ch;
+}
+
+.document strong {
+  color: #132b32;
+}
+
+.document code {
+  padding: 0.15em 0.35em;
+  border-radius: 5px;
+  background: var(--surface-soft);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.document table {
+  display: block;
+  width: 100%;
+  margin: 26px 0 38px;
+  overflow-x: auto;
+  border-spacing: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.document thead {
+  background: var(--surface-soft);
+}
+
+.document th,
+.document td {
+  min-width: 132px;
+  padding: 13px 14px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.document th {
+  color: #33434d;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.document th:last-child,
+.document td:last-child {
+  border-right: 0;
+}
+
+.document tr:last-child td {
+  border-bottom: 0;
+}
+
+.document blockquote {
+  margin: 28px 0;
+  padding: 18px 22px;
+  border-left: 4px solid var(--accent);
+  background: var(--accent-soft);
+}
+
+.document hr {
+  margin: 50px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: #eef3f1;
+}
+
+.site-footer__inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 26px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    position: static;
+  }
+
+  .site-header__inner,
+  .site-footer__inner,
+  .review-banner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-header__inner {
+    padding-block: 18px;
+  }
+
+  .site-nav {
+    gap: 12px 16px;
+  }
+
+  .review-banner {
+    display: flex;
+    gap: 18px;
+    padding: 22px;
+  }
+
+  .document {
+    border-radius: 16px;
+    padding: 24px 20px;
+  }
+
+  .document h2 {
+    margin-top: 50px;
+  }
+
+  .site-footer__inner {
+    padding-block: 22px;
+  }
+}
+
+@media print {
+  .site-header,
+  .site-footer {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .page-shell {
+    width: 100%;
+    padding: 0;
+  }
+
+  .review-banner,
+  .document {
+    border: 0;
+    box-shadow: none;
+  }
+
+  .document table {
+    display: table;
+    font-size: 9pt;
+  }
+}
+
