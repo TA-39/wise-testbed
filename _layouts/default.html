@@ -16,11 +16,6 @@
           <img class="brand__logo" src="{{ '/assets/ta39-logo-wordmark.png' | relative_url }}" alt="TA39 — Teacher's Assistant">
           <span class="brand__context">WISE Testbed</span>
         </a>
-        <nav class="site-nav" aria-label="Document navigation">
-          <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Current status</a>
-          <a href="{{ '/decisions/' | relative_url }}"{% if page.url == '/decisions/' %} aria-current="page"{% endif %}>Decision log</a>
-          <a href="{{ '/changes/' | relative_url }}"{% if page.url == '/changes/' %} aria-current="page"{% endif %}>Change log</a>
-        </nav>
       </div>
     </header>
 
@@ -34,7 +29,7 @@
         </div>
         {% if page.status_date %}
         <dl class="review-banner__meta">
-          <dt>Status date</dt>
+          <dt>Last updated</dt>
           <dd>{{ page.status_date }}</dd>
         </dl>
         {% endif %}
